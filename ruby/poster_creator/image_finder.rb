@@ -1,8 +1,8 @@
 require 'net/http'
 require 'json'
 
-    # http://labs.ideeinc.com/multicolr/#colors=d73224
-    # http://labs.ideeinc.com/coloursearch/services/rest/?method=color.search&quantity=20&page=0&colors=d73224&imageset=flickr
+    # these come from here:
+    # http://labs.ideeinc.com/multicolr/
 
 class ImageFinder
   
