@@ -1,5 +1,21 @@
+% This file is a bunch of random snippets for latex
+
+
+% nice headings
+	\usepackage{fancyheadings}
+	\pagestyle{fancy}
+	\rhead{Amiel Martin}
+	\lhead{\thepage}
+	
+
 % don't show numbers in biblography	
 	\makeatletter
 	\renewcommand\@biblabel[1]{}
 	\makeatother
+	
+% good outline labels
+	\renewcommand{\labelenumi}{\Roman{enumi}.}
+	\renewcommand{\labelenumii}{\Alph{enumii}.}
+	\renewcommand{\labelenumiii}{\arabic{enumiii}.}
+	\renewcommand{\labelenumiv}{\alph{enumiv}.}
 	
