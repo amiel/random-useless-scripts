@@ -1,0 +1,17 @@
+#!/usr/bin/perl -w
+
+$a=@a=split //,$ARGV[0];
+
+
+if ($a%2!=0){
+	die "sting must be even number";
+}
+
+
+for ($i=0;$a[$i];++$i){
+	if ($i%2==0){
+		print $a[$i];
+	} else {
+		print $a[-$i];
+	}
+}
