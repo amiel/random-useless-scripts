@@ -1,0 +1,57 @@
+Exercise B - General Questions
+
+Answer each of the following questions.
+
+   1. What is "information hidingâ", and what is an advantage of using it?
+
+
+information hiding is 
+
+       
+   2. Write reasonable pre- and postconditions for the following function, which does a speed computation:
+
+          // calcSpeed
+          // pre:
+          //  dist >= 0
+          //  time > 0
+          // post: returns the speed (dist / time)
+          double calcSpeed(double dist, double time)
+          {
+              return dist / time;
+          }
+
+
+       
+   3. Write reasonable class invariants for the following class, which holds a array of data.
+
+          // class invariants:
+          // 0 <= n_ <= however big size_t is
+          // arr_ points to enough allocated memory for n_ ints
+          class MyArray {
+
+             // Member function declarations go here
+
+          private:
+              int * arr_;  // pointer to array
+              size_t n_;   // size of array
+          };
+
+
+       
+   4. The following code (for finding the area of a circle) compiles and produces correct answers. However, it is both poorly designed and poorly written.
+
+          double a(double&r)
+          {
+              double v=3.1415926535897932384626433832795*r*r;return v;
+          }
+
+      Find three problems with this code, and indicate how you would fix them.
+
+1. PI as a magic number should be moved to a constant
+2. function should have a meaningful name
+3. no need for pass by reference, use pass by value
+
+const double PI = 3.1415926535897932384626433832795;
+double areaOfCircle(double r) {
+  return PI*r*r;
+}

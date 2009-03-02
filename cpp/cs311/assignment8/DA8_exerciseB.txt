@@ -1,0 +1,35 @@
+﻿1 Binary Search Trees.
+
+1.The array representation of a complete Binary Tree is more efficient in both time and space than the node/pointer representation. Why, then, do we typically not use the array representation to implement a Binary Search Tree?
+
+Because a Binary Search Tree is not complete.
+
+2.Suppose we are given a (large) list of numbers. We insert these, in order, into a Binary Search Tree, using the algorithm discussed in class. What property of the list of numbers guarantees that the Binary Search Tree will exhibit worst-case behavior (i.e., linear-time insertion)?
+
+If the list is sorted, then the Binary Search Tree will essentially be a linked list, with inefficient algorithms.
+
+ 
+2 Priority Queues.
+
+1.How can we use a Priority Queue to implement a Stack or a Queue?
+
+I would give the Priority Queue a key-value type whose key gets incremented for each insert. Use a Maxheap for a Stack and a Minheap for a Queue.
+
+2.A Priority Queue is a restricted-access Table. Thus, we can implement a Priority Queue easily given a Table implementation, simply by allowing the client access to only a limited subset of the Table functionality. But we typically do not implement a Priority Queue this way. Why not?
+Because it is more efficient to use a heap.
+
+
+3  Heaps.
+
+1.The Heap insert algorithm, using the array representation, requires reallocate-and-copy if there is no space available. Why, then, do we say that Heap insert is logarithmic time, when the worst case is “obviously” linear time?
+
+Because the way we implement it, the client is responsible for the reallocate-and-copy.
+
+2.What is the order of function heapTest from Exercise A, assuming a good algorithm is used?
+
+O(n)
+
+3.Heap Sort is O(n log n) and requires only constant additional space. We have not discussed any other algorithm for sorting an array that has both of these properties. In addition, Heap Sort is naturally non-recursive, and thus suffers from none of the drawbacks of recursive algorithms. Why, then, do we not use Heap Sort for all of our sorting? Give two reasons.
+
+a. heap sort is not stable
+b. introsort is faster

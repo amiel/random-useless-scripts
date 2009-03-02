@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" href="http://www.cs.uaf.edu/2006/fall/cs311/class1.css" type="text/css">
+<style type="text/css">
+/***********************
+* .ans
+* for highligting answers
+************************/
+.ans {
+	font-weight: bold;
+	color: #400;
+	background-color: #ccc;
+  border: 1px solid;
+  padding: 6px;
+  margin-bottom: 10px;
+  margin-top: 2px;
+}
+
+/**********************
+* .ansnorm
+* for returning back to normal inside an answer
+**********************/
+.ansnorm {
+  font-weight: normal;
+  color: black;
+}
+</style>
+<title>CS 311 Fall 2006: Assignment 5</title>
+</head>
+
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<b>CS 311 Fall 2006
+&nbsp;&gt;&nbsp;
+Assignment 5</b>
+</td>
+</tr>
+</table>
+<hr>
+
+<h1>CS 311 Fall 2006<br>
+Assignment 5</h1>
+
+<p>
+Assignment 5 is due at <b>5 p.m. Thursday, October 12</b>.
+It is worth 20 points.
+
+<h2>Procedures</h2>
+
+<p>
+<b>E-mail</b>
+answers to the exercises below to
+<a href="mailto:ffggc@uaf.edu?Subject=DA5"><tt>ffggc@uaf.edu</tt></a>,
+<b>using the subject</b>
+&ldquo;<tt><span class="standout">DA5</span></tt>&rdquo;.
+  <ul>
+  <li>Be sure to include <b>your name</b> in your e-mail.
+  <li>I may not read your homework e-mail immediately.
+  If you wish to <i>discuss</i> the assignment (or anything else)
+  with me, send me a separate message with a different subject line.</li>
+  </ul>
+
+<h2>Problems (20 pts total)</h2>
+
+<h3>Exercise A &mdash; Mathematical Induction</h3>
+
+<p>
+Answer each of the following questions.
+
+<ol class="t1">
+
+<li><b>Basic Ideas.</b>
+
+  <ol class="ta">
+
+  <li>Name and briefly explain the three parts of an induction proof, as covered in class.</li>
+		<div class="ans"><ol class=t1>
+			<li> Basis: prove that the statement is true for some small n</li>
+			<li> Inductive hyponthesis: assume that the statement is true for n + 1</li>
+      <li> Inductive conclusion: prove that the statement is true for n + 1</li>
+		</ol></div>
+  <li>What is the difference between &ldquo;weak induction&rdquo; and &ldquo;strong induction&rdquo;?</li>
+	<div class=ans><ul>
+	<li> in weak induction, we assume that the statement is true for all numbers of n</li>
+  <li> in strong induction, we assume that the statement is true for all number of n and all smaller values of n that are valid</li>
+	</ul></div>
+  </ol><br>&nbsp;</li>
+
+<li><b>Mathematical Induction &amp; Functions.</b>
+
+  <ol class="ta">
+  <li>Mathematical induction is particularly useful for verifying facts about a certain kind of function.
+  What kind is this?</li>
+  <div class=ans>
+                recursive functions
+                OR functions that implement recursive algorithms
+  </div>
+
+
+  <li>We discussed two things related to a function that could be verified using a proof.
+  Name these two things.</li>
+  <div class=ans><ol class=t1>
+                <li>correctness</li>
+                <li>efficiency</li>
+  </ol></div>
+  </ol><br>&nbsp;</li>
+
+<li><b>Pieces of a Proof.</b>
+
+Suppose we are proving that <i>f</i>(<i>n</i>)&nbsp;=&nbsp;<i>g</i>(<i>n</i>),
+for every positive integer <i>n</i>,
+using mathematical induction.
+  <ol class="ta">
+  <li>What must we prove, in the basis (base case)?</li>
+  <div class=ans>we must prove that <i>f</i>(1) == <i>g</i>(1)</div>
+  <li>If we are using weak induction, what is our induction hypothesis?</li>
+  <div class=ans><i>f</i>(<i>n</i> + 1) == <i>g</i>(<i>n</i> + 1)</div>
+
+  </ol><br>&nbsp;</li>
+
+</ol>
+
+<h3>Exercise B &mdash; Efficiency</h3>
+
+<p>
+Answer each of the following questions.
+
+<ol class="t1">
+
+<li>How do we measure the (time) efficiency of an algorithm in a way
+that is independent of compiler, system, and implementation details?
+<div class=ans> by counting the number of steps it has to take based on how much data it has to deal with</div>
+</li>
+
+<li>How fast are the slowest algorithms that we would generally consider to be useful?
+<div class=ans><i>O</i>(<i>n</i> log <i>n</i>)</div>
+</li>
+<li>Algorithms faster than linear time are rare. Why?
+                <div class=ans>because they cannot read all of their input</div>
+</li>
+</ol>
+
+<h3>Exercise C &mdash; Order of Algorithms</h3>
+
+<p>
+Answer each of the following questions.
+
+<ol class="t1">
+
+<li><b>Counting Steps.</b>
+In each part, give a <b>formula</b> for the number of steps required for input of size <tt>n</tt>.
+<i>Note: Break each function into the &ldquo;obvious&rdquo; statements, with each counting as one step.
+I count 2 and 7 statements for each of the functions, respectively.</i>
+  <ol class="ta">
+
+  <li><blockquote><pre>int func1(int p[], int n)  // n is size of array p
+{
+    int result = 3 * p[0] + 4;
+    return result;
+}</pre></blockquote></li>
+
+<div class=ans>
+                        <div class=ansnorm>result declaration        1</div>
+                        <div class=ansnorm>return                    1</div>
+                        <br />
+                        f(n) = 2
+                        </div>
+ 
+  <li><blockquote><pre>void func3(int p[], int n)  // n is size of array p
+{
+    for (int i = 0; i &lt; n; ++i)
+    {
+        for (int k = 0; k &lt; i; ++k)
+        {
+            arr[k] += 2 * i;
+        }
+    }
+}</pre></blockquote></li>
+
+<div class=ans>
+
+                        <div class=ansnorm>int i = 0       1</div>
+                        <div class=ansnorm>i &lt; n           n + 1</div>
+                        <div class=ansnorm>++i             n</div>
+                        <div class=ansnorm>int k = 0       n</div>
+                        <div class=ansnorm>k &lt; i           n(n + 1) = n^2 + n</div>
+                        <div class=ansnorm>++k             n^2</div>
+                        <div class=ansnorm>arr[k] +=       n^2</div>
+                        <br />
+                        f(n) = 3n^2 + 4n + 2
+</div>
+  </ol><br>&nbsp;</li>
+
+<li><b>Big-<i>O</i> and Names.</b>
+For each part of the previous problem, indicate the order of the given function, based on your answers to the previous problem.
+Express your answers using both big-<i>O</i> and the corresponding names (&ldquo;linear time&rdquo;, etc.).</li>
+<div class=ans><ol class=t1>
+  <li><i>O</i>(1)</li>
+  <li><i>O</i>(<i>n</i><sup>2</sup>)</li>
+  </ol></div>
+<li><b>Rule of Thumb.</b>
+
+What is the order of the following function?
+Express your answer using big-<i>O</i>.
+
+<i>Note that the </i><tt>s</tt><i> loop is different from the others.</i>
+<blockquote><pre>void func3(int p[], int n)  // n is size of array p
+{
+    for (int i = 0; i &lt; n; ++i)
+        for (int j = i; j &lt; n; ++j)
+            for (int s = -3; s &lt;= 3; ++s)
+                for (int t = 0; t &lt; j; ++t)
+                    cout &lt;&lt; "Hi!" &lt;&lt; endl;
+}</pre></blockquote>
+<div class=ans><i>O</i>(<i>n</i><sup>3</sup>)</div>
+
+<br>&nbsp;</li>
+
+<li><b>Worst Case vs. Average Case.</b>
+When we say that an algorithm is, for example,
+<i>O</i>(<i>n</i>&nbsp;log&nbsp;<i>n</i>), without any further qualification,
+are we saying something about the algorithm&rsquo;s
+<b>worst-case</b> performance,
+or its <b>average-case</b> performance?</li>
+<div class=ans>worst-case</div>
+
+</ol>
+
+<h3>Exercise D &mdash; Sorting</h3>
+
+<p>
+Answer each of the following questions.
+
+<ol class="t1">
+
+<li>What does it mean to say that an algorithm is &ldquo;in-place&rdquo;?&nbsp;</li>
+
+          <div class=ans>an in-place sorting algorithm does not need large buffers, that are not the original array, to hold data</div>
+<li>What does it mean to say that a sorting algorithm is &ldquo;stable&rdquo;?&nbsp;</li>
+        <div class=ans>an algorithm is "stable" when it does not change the order of items that are "equal" as far as the comparison is concerned</div>
+
+</ol>
+
+<p>
+<hr>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td align="left" valign="top">
+<small>
+CS 311 Fall 2006: Assignment 5 /
+Updated: 12 Oct 2006 /
+<a href="http://www.cs.uaf.edu/~chappell/">Glenn G. Chappell</a> /
+<a href="mailto:ffggc@uaf.edu"
+><tt>ffggc@uaf.edu</tt></a>
+</small>
+</td>
+<td align="right" valign="top">
+not so much valid html anymore
+<!-- not so much valid anymore I think, probably because of puting divs in the middle of ol&#8217;s
+<a href="http://validator.w3.org/check?uri=referer">
+<img class="plain"
+src="http://www.w3.org/Icons/valid-html401"
+alt="Valid HTML 4.01!" height="31" width="88"></a>
+-->
+
+</td>
+</tr>
+</table>
+
+</body>
+</html> 

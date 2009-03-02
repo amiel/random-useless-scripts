@@ -1,0 +1,403 @@
+
+Wed Sep 20 13:17:12 AKDT 2006
+
+
+foo & operator = (const foo & rhs) {
+        if (this != &rhs) {
+                ;
+        }
+        return *this;
+}
+
+
+read 2.1
+
+
+
+
+Fri Sep 22 13:07:53 AKDT 2006
+
+handling error codes
+  * prevent
+  * handle it
+  * refer it to the client
+
+three ways to signal the client:
+  * 
+
+
+
+
+
+Mon Sep 25 13:05:21 AKDT 2006
+
+
+destructors should not throw
+
+chapters 2 & 5
+
+3 main applications for recursion
+ * searching a list
+ * computation
+ * solution search
+
+read 2.5
+
+questions:
+Explain the ternm recursive and iterative
+list two factors that according to the reading, cause same recursive algorithms to be inefficient
+what is tail recursion? why is it important?
+
+
+
+
+Wed Sep 27 13:14:28 AKDT 2006
+
+copy ctor may have a bug if the copy assignment for type T throws, then memory leak
+
+
+read 5.1
+what is backtracking
+explain how recursion can make backtracking easy
+
+
+
+Fri Sep 29 13:10:27 AKDT 2006
+
+
+
+
+
+
+Mon Oct  2 13:04:49 AKDT 2006
+
+do we have a dfull solution
+  return 1
+do we have a dead end
+  return 0
+otherwise
+  make a recursive call or each way ef extending the partial solution
+
+either pass by value or restore the previous state
+
+
+
+
+
+domino problem
+2 x 1 = 1
+2 x 2 = 2
+2 x 3 = 3
+3 x 3 = 0
+
+
+number of dominoes used so far
+board size x and y
+numDominoes * 2 = x * y  is a full sollution
+
+
+
+
+
+Wed Oct  4 13:19:09 AKDT 2006
+
+
+
+weak induction
+  for all values of n
+strong induction
+  for all values of n and smaller valid numbers
+
+mathamatical induction
+basis,
+inductive hypothesis
+inductive concludtion
+
+
+closed form expression = a formula
+
+
+read 9.1
+
+
+
+
+
+Fri Oct  6 13:09:02 AKDT 2006
+
+
+application of mathematical induction
+proving efficiancy
+proving acuracy
+
+
+
+introsort is the fastest sort
+bubblesort is used in two places:
+  1. used in cs classes
+  2. by people who don't know what they are doing
+
+people use
+merge intro heap ... he goes too fast
+
+
+
+algorithm is effecient if it uses few resources, the most important of which is time
+
+
+
+
+Mon Oct  9 13:04:57 AKDT 2006
+
+
+scalable
+
+o(1) constant
+o(logn) logarithmic
+o(n) linear
+o(nlogn) log-linear
+o(n^2) quadratic
+o(b^n) exponential
+
+
+o(1) array lookup
+o(logn) binary search
+o(n) linked list lookup
+  looks through all of input
+o(nlogn) mergesort - good sorting algorithms
+    slowest and ok
+o(n^2) nested for loops
+o(b^n) 
+
+
+efficiency
+  what is the order of the algorithm
+
+requirements on data
+  random access
+  operators?
+
+space usage
+  in-place?
+  additional storage
+
+stability
+  doesn't reverse the order of equivilet items
+
+performance on nearly sorted data
+
+
+
+1. given an algorithm with for loops
+2. O(?) means?
+3. mergesort
+
+
+
+
+
+Wed Oct 11 13:01:43 AKDT 2006
+
+
+
+
+insertion sort is too slow for general purpose
+but is fast O(n) for nearly sorted data
+and is fast for small lists
+
+
+
+
+Fri Oct 13 13:08:42 AKDT 2006
+
+Bubble sort exists for cs classes
+Selection sort " " "
+
+Insertion sort works really well for nearly sorted data and small lists
+
+merge sort is usually how stable sort is written (with many optimizations and probably a call to insertion sort if is small)
+
+
+
+write down master theorum fnish slide
+
+
+
+
+Wed Oct 18 13:02:39 AKDT 2006
+
+
+bubble, selection
+  never
+insertion
+  small lists
+  nearly sorted data
+merge
+  stability is needed
+  not random acces
+heap
+  certain 
+quicksort
+  never
+introsort
+  almost always
+Radix
+  sorting zip codes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+========================
+= 2nd half of semester =
+========================
+
+
+
+Mon Oct 23 13:09:52 AKDT 2006
+
+ADT is a collection of data, along with a set of operations on that data
+
+list ~= sequence
+
+
+
+
+Wed Oct 25 13:21:39 AKDT 2006
+
+
+
+Fri Oct 27 13:08:18 AKDT 2006
+
+
+
+
+
+Wed Nov  1 13:04:49 AKST 2006
+
+
+these are really from yesterday, but my computer wasn't in class yesterday
+
+amortized constant time means
+k operations are O(k)
+
+requirements on types
+destructor must not throw
+
+MyClass().swap(*this);
+
+
+
+tmp = MyClass(rhs);
+swap(tmp);
+
+
+
+
+
+
+
+++size_;
+if(capacity_ < size_)
+  `
+  
+
+
+exception neutral is when the function/package does not catch without rethrowing
+
+
+
+arr = new [];
+try {
+  std::copy(arr, 
+ } catch (...) {
+  delete [] arr;
+  throw;
+ }
+
+
+
+to write
+  function
+    -pre
+    -post
+    -throws
+    -guarantee
+  class
+    -invariants
+    -requirements on types
+
+
+ - copy ctor
+ - copy assignment = use swap
+resize
+insert
+del
+
+- swap
+
+
+
+use std::rotate
+
+
+
+
+
+
+
+QUESTIONS:
+#  in swap, do you have to swap all the members, or can you just swap this with &rhs
+  polluting namespace with unrelated functions
+  any reason to catch in insert?
+#need to say throw if guarantee?
+  throw on out of range?
+
+
+
+
+Fri Nov  3 13:01:47 AKST 2006
+
+
+the three things that Prof Chappell wants us to do in the next 50 years
+  do something about the mod operator
+  get rid of the mouse
+  find something better than a weak reference
+
+
+
+Wed Nov  8 13:03:02 AKST 2006
+
+
+read 7.1 & 7.2
+
+
+after class: ratpoison assignment leaving
+
+
+
+
+Mon Nov 27 13:06:42 AKST 2006
+
+// del std::distance
+exception safety
+// what happens when we trickle down from bottom -- looks pretty good
+// check parent algo for heapMake
+
+
+is it safe to assume that -1/2 == 0 or should I put in a check?
+
+can we assume that unary operator* and operator <  do not throw?

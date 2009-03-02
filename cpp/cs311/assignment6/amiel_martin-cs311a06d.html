@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en"><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rev="made" href="mailto:ffggc@uaf.edu">
+
+<style type="text/css">
+/***********************
+* .ans
+* for highligting answers
+************************/
+.ans, .ansinline {
+	font-weight: bold;
+	color: #400;
+	background-color: #ccc;
+  border: 1px solid;
+  padding: 6px;
+  margin-bottom: 10px;
+  margin-top: 2px;
+}
+
+/**********************
+* .ansnorm
+* for returning back to normal inside an answer
+**********************/
+.ansnorm {
+  font-weight: normal;
+  color: black;
+}
+
+
+/**********************
+* .ansinline
+* for puting answers on the same line as the text
+**********************/
+.ansinline {
+	display: inline;
+	padding: 2px;
+}
+</style>
+<link rel="stylesheet" href="http://www.cs.uaf.edu/2006/fall/cs311/class1.css" type="text/css"><title>CS 311 Fall 2006: Assignment 6</title></head><body>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td align="left" valign="top">
+<b><a href="http://www.cs.uaf.edu/2006/fall/cs311/">CS 311 Fall 2006</a>
+&nbsp;&gt;&nbsp;
+Assignment 6</b>
+</td>
+</tr>
+</tbody></table>
+<hr>
+
+<h1>CS 311 Fall 2006<br>
+Assignment 6</h1>
+
+<h3>Exercise B — About <tt>SequenceT</tt></h3>
+
+<p>
+Answer each of the following questions.
+
+</p><ol class="t1">
+
+<li><b>Order of Operations.</b>
+In your implementation of <tt>SequenceT</tt>, what is the order of each of the following operations?
+Assume that each of <tt>obj</tt>, <tt>item</tt>, and <tt>index</tt> has the appropriate type.
+  <ol class="ta">
+  <li><tt>obj[index]</tt><div class=ans><i>O</i>(1)</div></li>
+  <li><tt>obj.~SequenceT()</tt><div class=ans><i>O</i>(1)</div></li>
+  <li><tt>obj.insert(item, index)</tt><div class=ans><i>O</i>(<i>n</i>)</div></li>
+  <li><tt>obj.insert(item, 0)</tt><div class=ans><i>O</i>(<i>n</i>)</div></li>
+  <li><tt>obj.insert(item, obj.size())</tt><br>
+  <i>Yes, it should be amortized constant time,
+  but that is not what I am asking.
+  Tell me the worst-case behavior of a single function call.</i><div class=ans><i>O</i>(<i>n</i>)</div></li>
+  <li><tt>obj.del(item, index)</tt><div class=ans><i>O</i>(<i>n</i>)</div></li>
+  <li><tt>obj.del(item, obj.size()-1)</tt><div class=ans><i>O</i>(1)</div><br>
+  <i>Assume that </i><tt>obj</tt><i> has size at least 1.</i></li>
+  </ol><br>&nbsp;</li>
+
+<li><b>Trade-Offs.</b>
+Implementing <tt>SequenceT</tt> involves trade-offs.
+In particular,
+for at least one member function (and maybe more ...),
+getting the exception-safety level we would like
+involves a reduction in efficiency.
+Explain and <b>justify</b> the choices you made
+regarding exception safety vs. efficiency for each such function.
+<i>Hint: If your answer to this problem is “There are no such functions”,
+then you have done something wrong.</i><br>&nbsp;</li>
+<div class=ans><tt>insert</tt> and <tt>del</tt> both only have the Basic Guarantee, because in
+order to offer the Strong Guarantee, they would both have to make a copy of the
+whole array. This would make <tt>del</tt> <i>O</i>(<i>n</i>) as opposed to <i>O</i>(1), and <tt>insert</tt> <i>O</i>(<i>n</i>) as opposed to ammortized constant time.</div>
+
+<li><b>Improvements.</b>
+<tt>SequenceT</tt> could be improved, of course.
+Tragically, you are not allowed to do it better,
+because of that pesky specification I have given you.
+Well, suppose you could rewrite the specification.
+Give <b>two improvements</b> you could make,
+that would result in a more useful/useable package.
+<i>Note:“Use </i><tt>std::vector</tt><i> instead” is not the answer I am looking for.</i>&nbsp;</li>
+<div class=ans><ol class=t1>
+<li><tt>push</tt> and <tt>pop</tt> functions would be nice, but they are not a huge feature improvement</li>
+<li>public member functions to set and get the capacity</li>
+<li>we could make the <tt>swap</tt> function public</li>
+</ol></div>
+
+</ol>
+
+<h3>Exercise C — General Questions</h3>
+
+<p>
+Answer each of the following questions.
+
+</p><ol class="t1">
+
+<li><b>Key-Value Pairs in a Sorted Array.</b>
+Suppose we wish to store a “dictionary”
+(a.k.a. “associative array”, a.k.a. “map”),
+that is, a collection of key-value pairs,
+in a <b>sorted array</b>.
+For each operation below, briefly explain
+<b>how to implement it efficiently</b>,
+and give its <b>order</b>,
+using big-<i>O</i>.
+  <ol class="ta">
+  <li>Determine whether a given key lies in the data set;
+  if so, return the associated value.</li>
+	<div class=ans>do a binary search (on the key) return the value: <i>O</i>(log <i>n</i>)</div>
+  <li>Insert a given key-value pair into the set.</li>
+	<div class=ans><tt>find</tt> the place the pair should go with a binary search, and <tt>insert</tt> (like SequenceT) <i>O</i>(<i>n</i>)</div>
+  <li>Delete a given key-value pair from the set.</li>
+	<div class=ans><tt>find</tt> the pair to be deleted with a binary search, and <tt>del</tt> (like SequenceT) <i>O</i>(<i>n</i>)</div>
+  </ol><br>&nbsp;</li>
+
+<li>Explain the uses and/or benefits of a “commit”
+function that can never produce an error condition.<br>&nbsp;</li>
+<div class=ans>with a non-throwing commit function gives the opportunity to
+offer the Strong Guarantee by making changes on a temp, and if no error has occured then commit the changes</div>
+
+</ol>
+
+<p>
+</p><hr>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td align="left" valign="top">
+<small>
+CS 311 Fall 2006: Assignment 6 /
+Updated: 31 Oct 2006 /
+<a href="http://www.cs.uaf.edu/%7Echappell/">Glenn G. Chappell</a> /
+<a href="mailto:ffggc@uaf.edu"><tt>ffggc@uaf.edu</tt></a>
+</small>
+</td>
+<td align="right" valign="top">
+</td>
+</tr>
+</tbody></table>
+
+ </body></html>

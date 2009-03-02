@@ -1,0 +1,75 @@
+
+actually works version
+
+
+amiel@Hobbes:assignment4:$ time ./domino
+loops: 151763498
+calls: 77291121
+maxdepth: 32
+12988816
+
+real    7m5.626s
+user    5m41.678s
+sys     0m3.851s
+
+
+
+
+about what I plan to turn in
+
+amiel@Hobbes:assignment4:$ time ./domino
+12988816
+
+real    6m27.949s
+user    5m14.487s
+sys     0m3.557s
+
+
+
+without continue
+
+maybe this is better
+amiel@Hobbes:assignment4:$ time ./domino
+12988816
+
+real    6m23.918s
+user    5m5.312s
+sys     0m3.297s
+
+
+
+this iscould almost turn in, without iters, with continue
+amiel@Hobbes:assignment4:$ time ./domino
+12988816
+
+real    6m29.439s
+user    5m25.246s
+sys     0m3.357s
+
+
+
+
+
+
+
+
+
+
+
+
+amiel@Hobbes:assignment4:$ echo with continue; time ./domino
+with continue
+12988816
+
+real    6m51.755s
+user    4m56.497s
+sys     0m4.576s
+
+amiel@Hobbes:assignment4:$ echo without continue; time ./domino
+without continue
+12988816
+
+real    6m15.750s
+user    4m39.831s
+sys     0m4.111s
+

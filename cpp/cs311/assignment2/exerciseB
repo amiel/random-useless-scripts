@@ -1,0 +1,51 @@
+Exercise B - General Questions
+
+Answer each of the following questions.
+
+   1.  
+         1. When we declare a copy constructor in C++, what other functions do we probably need to declare?
+
+Copy Assignment, and Destructor
+
+         2. Under what circumstances do we usually need to declare these functions?
+
+when a class is RAII (we are managing a resource like dynamicly allocated memory, open files, etc, etc)
+
+       
+   2. Below is part of a C++ class definition:
+
+          // Class Emu
+          // Invariants:
+          //    p_ points to valid allocated memory and
+          //    is owned by *this
+          class Emu {
+          public:
+              ~Emu()
+              { delete p_; }
+
+              [Other functions go here]
+
+          private:
+              unsigned long * p_;
+          };
+
+      Write reasonable class invariants for class Emu. Hint: Remember that ownership is a class invariant.
+       
+   3.  
+         1. What is the key feature of a class that implements RAII? Hint: One of its member functions does something.
+the destructor, that deallocates memory automatically, so that it doesn't get forgotten
+
+         2. How does RAII make C++ programming "safer"?
+RAII prevents resource leaks
+
+
+       
+   4.  
+         1. In the context of this class, what is a container?
+A container is a data structure that can contain multiple items
+
+         2. Give two examples of containers available in standard C++ (built into the language or part of the Standard Library).
+vector, deque
+
+       
+

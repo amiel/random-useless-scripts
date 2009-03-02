@@ -1,0 +1,143 @@
+Q: CS 311 Fall 2006  >  Assignment 5
+Q: Assignment 5
+Q: 
+Q: Assignment 5 is due at 5 p.m. Thursday, October 12. It is worth 20 points.
+Q: Procedures
+Q: 
+Q: E-mail answers to the exercises below to ffggc@uaf.edu, using the subject “DA5”.
+Q: 
+Q:     * Be sure to include your name in your e-mail.
+Q:     * I may not read your homework e-mail immediately. If you wish to discuss the assignment (or anything else) with me, send me a separate message with a different subject line.
+Q: 
+Q: Problems (20 pts total)
+Q: Exercise A — Mathematical Induction
+Q: 
+Q: Answer each of the following questions.
+Q: 
+Q:    1. Basic Ideas.
+Q:          1. Name and briefly explain the three parts of an induction proof, as covered in class.
+                Basis: prove that the statement is true for some small n
+                inductive hyponthesis: assume that the statement is true for n + 1
+                inductive conclusion: prove that the statement is true for n + 1
+Q:          2. What is the difference between “weak induction” and “strong induction”?
+                in weak induction, we assume that the statement is true for all numbers of n
+                in strong induction, we assume that the statement is true for all number of n and all smaller values of n that are valid
+Q: 
+Q:        
+Q:    2. Mathematical Induction & Functions.
+Q:          1. Mathematical induction is particularly useful for verifying facts about a certain kind of function. What kind is this?
+                recursive functions
+                functions that implement recursive algorithms
+
+Q:          2. We discussed two things related to a function that could be verified using a proof. Name these two things.
+                correctness
+                efficiency
+
+
+Q: 
+Q:        
+Q:    3. Pieces of a Proof. Suppose we are proving that f(n) = g(n), for every positive integer n, using mathematical induction.
+Q:          1. What must we prove, in the basis (base case)?
+                that f(1) == g(1)
+
+Q:          2. If we are using weak induction, what is our induction hypothesis?
+                f(n + 1) == g(n + 1)
+
+Q: 
+Q:        
+Q: 
+Q: Exercise B — Efficiency
+Q: 
+Q: Answer each of the following questions.
+Q: 
+Q:    1. How do we measure the (time) efficiency of an algorithm in a way that is independent of compiler, system, and implementation details?
+                by counting the number of steps it has to take based on how much data it has to deal with
+                
+Q:        
+Q:    2. How fast are the slowest algorithms that we would generally consider to be useful?
+                O(n log n)
+Q:        
+Q:    3. Algorithms faster than linear time are rare. Why?
+                because they cannot read all of their input
+Q:        
+Q: 
+Q: Exercise C — Order of Algorithms
+Q: 
+Q: Answer each of the following questions.
+Q: 
+Q:    1. Counting Steps. In each part, give a formula for the number of steps required for input of size n. Note: Break each function into the “obvious” statements, with each counting as one step. I count 2 and 7 statements for each of the functions, respectively.
+Q:          1.
+Q: 
+Q:                 int func1(int p[], int n)  // n is size of array p
+Q:                 {
+Q:                     int result = 3 * arr[0] + 4;
+Q:                     return result;
+Q:                 }
+
+                        result declaration        1
+                        return                    1
+                        f(n) = 2
+                        
+Q: 
+Q:          2.
+Q: 
+Q:                 void func3(int p[], int n)  // n is size of array p
+Q:                 {
+Q:                     for (int i = 0; i < n; ++i)
+Q:                     {
+Q:                         for (int k = 0; k < i; ++k)
+Q:                         {
+Q:                             arr[k] += 2 * i;
+Q:                         }
+Q:                     }
+Q:                 }
+
+                        int i = 0       1
+                        i < n           n + 1
+                        ++i             n
+                        int k = 0       n
+                        k < i           n(n + 1) = n^2 + n
+                        ++k             n^2
+                        arr[k] +=       n^2
+
+                        f(n) = 3n^2 + 4n + 2
+Q: 
+Q: 
+Q:        
+Q:    2. Big-O and Names. For each part of the previous problem, indicate the order of the given function, based on your answers to the previous problem. Express your answers using both big-O and the corresponding names (“linear time”, etc.).
+
+        1. O(1)
+        2. O(n^2)
+Q:        
+Q:    3. Rule of Thumb. What is the order of the following function? Express your answer using big-O. Note that the s loop is different from the others.
+Q: 
+Q:           void func3(int p[], int n)  // n is size of array p
+Q:           {
+Q:               for (int i = 0; i < n; ++i)
+Q:                   for (int j = i; j < n; ++j)
+Q:                       for (int s = -3; s <= 3; ++s)
+Q:                           for (int t = 0; t < j; ++t)
+Q:                               cout << "Hi!" << endl;
+Q:           }
+
+                O(n^3)
+
+Q: 
+Q: 
+Q:        
+Q:    4. Worst Case vs. Average Case. When we say that an algorithm is, for example, O(n log n), without any further qualification, are we saying something about the algorithm’s worst-case performance, or its average-case performance?
+                worst-case
+Q: 
+Q: Exercise D — Sorting
+Q: 
+Q: Answer each of the following questions.
+Q: 
+Q:    1. What does it mean to say that an algorithm is “in-place”?
+          an in-place sorting algorithm does not need large buffers, that are not the original array, to hold data
+               
+Q:        
+Q:    2. What does it mean to say that a sorting algorithm is “stable”?
+        an algorithm is "stable" when it does not change the order of items that are "equal" as far as the comparison is concerned
+Q:        
+Q: 
+Q: CS 311 Fall 2006: Assignment 5 / Updated: 9 Oct 2006 / Glenn G. Chappell / ffggc@uaf.edu        Valid HTML 4.01!
