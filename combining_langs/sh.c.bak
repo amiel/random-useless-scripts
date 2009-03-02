@@ -1,0 +1,8 @@
+#                          define true char c=0?32
+#                            define  o  char  *  s
+                                o="in bash and c";
+				     //bin/echo $o
+			                      true
+                                            : 10/*
+				            exit 1
+                    */;main(){printf("%s%c",s,c);}

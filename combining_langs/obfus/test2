@@ -1,0 +1,3 @@
+@^T = qw, 3( 2 9 6) ;
+21_PENGUINS, and print map {(1c((split//=>\"\"=>")[$^T>1])..__)[$_]}@^T
+

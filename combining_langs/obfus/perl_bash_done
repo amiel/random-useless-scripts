@@ -1,0 +1,6 @@
+eval "C='true is false'"; eval "t='p 2 as of tomorrow'";
+eval "s='p 4 h oh'";eval 'p(){ echo -ne "\033[${1}G${2}"
+}';eval "c='p 1 b or die in hell for all I care bitch'";
+$c = sub{print "\033[${_[0]}G${_[1]}"};$s = 4; $t = 'l';
+$C=@C=(sub{$s},sub{$t});$c ->($C[0]->(),$C[1]->());$s=1;
+$t = "per"; $c ->($C [0] ->(),$C [1] ->()); printf "\n";

@@ -1,0 +1,5 @@
+eval "my_command='/bin/true'";
+$my_command = "fsc";
+eval "my_command='printf f'";
+$my_command .= "anf";
+printf $my_command;printf "\n";

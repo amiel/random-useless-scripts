@@ -1,0 +1,13 @@
+eval "c='p 3 sh'";eval "t=$c
+";eval "s='p 1 b'";eval 'p()
+{ echo -ne "\033[${1}G ${2}"
+}';eval "C='p 2 a;true is'";
+$c = sub{print "\033[${_[0]}
+G ${_[1]}"};$s = 4;$t = 'p';
+$C [0] = sub { return $s } ;
+$C [1] = sub { return $t } ;
+$c ->($C[0]->(),$C [1]->());
+
+
+
+printf "\n\n";
