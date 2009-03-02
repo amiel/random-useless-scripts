@@ -1,0 +1,15 @@
+
+s=100000;
+u=./usleep;
+e="echo -en ";
+while :;do
+    $e"\r\\";
+    $u $s;
+    $e"\r|";
+    $u $s;
+    $e"\r/";
+    $u $s;
+    $e"\r-";
+    $u $s;
+done
+

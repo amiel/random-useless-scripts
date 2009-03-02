@@ -1,0 +1,157 @@
+#!/bin/bash
+
+
+echo "
+use vi keys
+
+		^
+		k
+	   < h	   l >
+		j
+		v
+
+or use these
+
+		^
+		w
+	   < a     d >
+	   	s
+		v
+
+press c to change the color
+
+press q or esc to quit
+
+press any key to continue..."
+
+
+
+read -s -n 1
+
+
+
+
+clear
+
+
+
+
+MINA=1
+MINB=1
+MAXA=50
+MAXB=20
+
+VERT=f
+HORIZ=G
+COLOR=m
+
+
+
+
+
+a=$[($MINA+$MAXA)/2]
+b=$[($MINB+$MAXB)/2]
+
+the_color=44
+
+
+
+
+
+draw_boundries(){
+	cont=yes
+	a_bound=$MINA
+	b_bound=$MINB
+	while [ $cont == "yes" ];do
+		[ $a_bound -eq $MINA ] && on $a_bound $b_bound
+		[ $b_bound -eq $MINB ] && on $a_bound $b_bound
+		[ $b_bound -eq $MAXB ] && on $a_bound $b_bound
+		a_bound=$[$a_bound+1]
+		if [ $a_bound -eq $MAXA ];then
+			on $a_bound $b_bound
+			a_bound=$MINA
+			if [ $b_bound -eq $MAXB ];then
+				on $a_bound $b_bound
+				cont=no
+			fi
+			b_bound=$[$b_bound+1]
+		fi
+	done
+}
+
+
+
+
+
+
+
+
+quit(){
+	clear
+	dastatus=$1
+	shift
+	echo $*
+	exit $dastatus
+}
+
+
+
+
+
+
+
+on(){
+	echo -ne "[$2$VERT[$1$HORIZ[$the_color$COLOR "
+	echo -ne "[$COLOR[$MINA$HORIZ[$MINB$VERT"
+}
+
+off(){
+	echo -ne "[$2$VERT[$1$HORIZ[$COLOR "
+}
+
+
+
+draw_boundries
+
+on $a $b
+
+
+while [ 1 ];do 
+	read -s -t 1 -n 1 input;
+
+	case $input in
+		w|k)
+		  off $a $b
+		  b=$[$b-1]
+		  [ $b -eq $MINB ] && b=$[$MAXB-1]
+		  ;;
+		a|h)
+		  off $a $b
+		  a=$[$a-1]
+		  [ $a -eq $MINA ] && a=$[$MAXA-1]
+		  ;;
+		s|j)
+		  off $a $b
+		  b=$[$b+1]
+		  [ $b -eq $MAXB ] && b=$[$MINB+1]
+		  ;;
+		d|l)
+		  off $a $b
+		  a=$[$a+1]
+		  [ $a -eq $MAXA ] && a=$[$MINA+1]
+		  ;;
+		q|)
+		  quit 0 "goodbye"
+		  ;;
+		c)
+		  the_color=$[$the_color+1]
+		  [ $the_color -eq 48 ] && the_color=41
+		  draw_boundries
+		  ;;
+		*)
+		  #nothing
+		  ;;
+	esac
+	input='nothing'
+	on $a $b
+done

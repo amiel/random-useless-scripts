@@ -1,0 +1,221 @@
+#!/bin/bash
+
+
+
+# "f" and "G" are used with [ or \033[
+# to go to a certain position on the screen
+VERT=f
+HORIZ=G
+
+
+
+usleep=./usleep
+
+
+error(){
+	clear
+	echo -ne "[m[0$VERT[0$HORIZ"
+	echo -e "[41;37;1mError:[m $2"
+	[ x$3 == "xdie" ] && exit $1
+}
+
+
+
+go_home(){
+	echo -ne "[m[0$VERT[0$HORIZ"
+}
+
+
+
+draw(){
+	[ $# -lt 3 ] && error 60 "draw() called with less than three args: $*" die
+	x=$1
+	y=$2
+	color=$3
+	text=${4- }
+	echo -ne "[$y$VERT[$x$HORIZ[${color};1m$text[m"
+}
+
+
+win(){
+	draw 27 $[$tries+4] "44;37" "Congradulations: you have won"
+	echo
+	echo
+	echo
+	exit 0
+}
+
+
+
+do_draw(){
+	draw $[($cursor*2)+36] $[$tries+3] ${colors[$cursor]} ${1- }
+	go_home
+}
+
+
+
+
+
+do_checks(){
+	ninspot=0
+	nnotinspot=0
+	for i_COLOR in 0 1 2 3;do
+		this_ninspot=0
+		this_nnotinspot=0
+		for cursor in 0 1 2 3;do
+			if [ ${colors[$cursor]} -eq ${COLORS[$i_COLOR]} ];then
+				[ $cursor -eq $i_COLOR ] && this_ninspot=1 && continue
+				this_nnotinspot=1
+			fi
+		done
+		[ $this_ninspot -eq 1 ] && ninspot=$[$ninspot+1] && continue
+		[ $this_nnotinspot -eq 1 ] && nnotinspot=$[$nnotinspot+1]
+	done
+	
+	draw 0 $[$tries+3] "40;37" "$ninspot    [47;30m$nnotinspot"
+	[ $ninspot -eq 4 ] && win
+}
+	
+
+
+
+answear(){
+	case $1 in
+		1)
+		  for i in 0 1 2 3;do
+			draw $[($i*2)+36] 0 ${COLORS[$i]}
+		  done
+		  ;;
+		0)
+		  draw 36 0 40 "       "
+		  ;;
+		*)
+		  error 30 "answear called without an arg" die
+		  ;;
+	esac
+	go_home
+}
+
+
+cool_disp(){
+	while [ 1 ];do
+		for i in 42 43 44 45 46 47;do
+			$usleep 50200
+			draw $1 $2 $i $3
+			go_home
+		done
+	done
+}
+
+
+#main()
+
+clear
+echo -ne "
+\t\t\t[44;31;1mWelcome to Mastermind[m
+
+
+\t\t  use 'w' and 's' to change the color
+\t\t   'a' and 'd' will move the cursor
+\t\t\t  press 'e' to enter
+
+\t\t    'q' or ESC will quit the game
+
+\t\t     press any key to continue...
+
+"
+
+
+cool_disp 47 11 "..." &
+pid=$!
+
+read -s -n1
+
+kill $!
+sleep 1
+go_home
+echo "                                                                                             "
+
+clear
+
+
+tries=0
+answear=0
+
+# generate random numbers between 42 and 47
+COLORS[0]=$[$RANDOM%6+42]
+COLORS[1]=$[$RANDOM%6+42]
+COLORS[2]=$[$RANDOM%6+42]
+COLORS[3]=$[$RANDOM%6+42]
+
+
+while [ 1 ];do
+
+	colors[0]=42
+	colors[1]=42
+	colors[2]=42
+	colors[3]=42
+
+	for cursor in 1 2 3;do
+		do_draw
+	done
+
+	cursor=0
+	do_draw .
+	cont="yes"
+	while [ $cont == "yes" ];do
+		read -s -t1 -n1 input
+	
+		case $input in
+			q|)
+			  clear
+			  echo -ne "[0m"
+			  exit 1
+			  ;;
+			a|h)
+			  do_draw
+			  cursor=$[$cursor-1]
+			  [ $cursor -lt 0 ] && cursor=3
+			  ;;
+			d|l)
+			  do_draw
+			  cursor=$[$cursor+1]
+			  [ $cursor -gt 3 ] && cursor=0
+			  ;;
+			w|k)
+			  color=${colors[$cursor]}
+			  color=$[$color+1]
+			  [ $color -gt 47 ] && color=42
+			  colors[$cursor]=$color
+			  ;;
+			s|j)
+			  color=${colors[$cursor]}
+			  color=$[$color-1]
+			  [ $color -lt 42 ] && color=47
+			  colors[$cursor]=$color
+			  ;;
+			e|b|n|y|g)
+			  do_draw
+			  do_checks
+			  cont=no
+			  tries=$[$tries+1]
+			  ;;
+			c)
+			  echo "                                                      "
+			  ;;
+			z|x)
+			  if [ $answear -eq 0 ];then
+				answear 1
+				answear=1
+			  else
+				answear 0
+				answear=0
+			  fi
+			  ;;
+			*)
+			  ;;
+		esac
+		do_draw .
+		input="nothing"
+	done
+done
