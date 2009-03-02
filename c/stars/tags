@@ -1,0 +1,31 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/darren@hiebert.com/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.0.1	//
+CC	Makefile	/^CC = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -Wall -I\/usr\/X11R6\/include\/X11 -I\/home\/amiel\/src\/c\/include$/;"	m
+LIBS	Makefile	/^LIBS = -L\/usr\/X11R6\/lib -L\/home\/amiel\/lib -lX11 -lerr$/;"	m
+MAX_X	draw.c	7;"	d	file:
+MAX_Y	draw.c	8;"	d	file:
+NULL	guys.h	3;"	d
+OBJS	Makefile	/^OBJS = guys.o$/;"	m
+_GUYS_H	guys.h	7;"	d
+color	guys.h	/^    int color;	\/\/ there should be a color type, I just dont know about it yet$/;"	m	struct:guy
+create_window	draw.c	/^void create_window(display_info *info){$/;"	f
+delete_list_of_guys	guys.c	/^void delete_list_of_guys(guy *head){$/;"	f
+display_info	draw.c	/^struct display_info {$/;"	s	file:
+display_info	draw.c	/^typedef struct display_info display_info;$/;"	t	file:
+dpy	draw.c	/^    Display *dpy;$/;"	m	struct:display_info	file:
+draw	draw.c	/^void draw(display_info *d, guy *me){$/;"	f
+gc	draw.c	/^    GC gc;$/;"	m	struct:display_info	file:
+guy	guys.h	/^struct guy {$/;"	s
+guy	guys.h	/^typedef struct guy guy;$/;"	t
+main	main.c	/^int main(){$/;"	f
+new_guy	guys.c	/^guy * new_guy(int r, int b, int g){$/;"	f
+next	guys.h	/^    guy *next;$/;"	m	struct:guy
+rgb	guys.c	/^int rgb(char r, char g, char b){$/;"	f
+w	draw.c	/^    Window w;$/;"	m	struct:display_info	file:
+x	guys.h	/^    int x;$/;"	m	struct:guy
+y	guys.h	/^    int y;$/;"	m	struct:guy
