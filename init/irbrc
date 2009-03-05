@@ -1,0 +1,21 @@
+# load libraries
+require 'rubygems'
+require 'wirble'
+
+# start wirble (with color)
+Wirble.init
+Wirble.colorize
+
+require 'pp'
+IRB.conf[:AUTO_INDENT]=true
+
+
+# bring logger to the console
+script_console_running = ENV.include?('RAILS_ENV') && IRB.conf[:LOAD_MODULES] && IRB.conf[:LOAD_MODULES].include?('console_with_helpers')
+rails_running = ENV.include?('RAILS_ENV') && !(IRB.conf[:LOAD_MODULES] && IRB.conf[:LOAD_MODULES].include?('console_with_helpers'))
+irb_standalone_running = !script_console_running && !rails_running
+
+if script_console_running
+  require 'logger'
+  Object.const_set(:RAILS_DEFAULT_LOGGER, Logger.new(STDOUT))
+end
