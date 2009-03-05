@@ -1,0 +1,27 @@
+startup_message off
+#hardstatus alwayslastline
+#hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r} (%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+
+
+hardstatus alwayslastline "%{= dR} %-Lw%50>%{= dG}%n%f* %{= dW}%t%{= dR}%+Lw%<"
+
+
+#activity "%c activity -> %n%f %t"
+#bell "%c bell -> %n%f %t^G"
+#caption always " %m%d %c |  %w"
+
+vbell_msg " *beep* "
+#vbell off
+
+
+
+bind r screen -h  4096 -t console /Users/amiel/bin/run_if_rails script/console
+bind R screen -h  4096 -t console /Users/amiel/bin/run_if_rails script/console
+bind T screen -h 16384 -t autotest /Users/amiel/bin/run_if_rails autotest
+
+screen -t server -h 16384
+
+#screen -t console bash -c './script/console;bash'
+
+#focus
+#select 0
