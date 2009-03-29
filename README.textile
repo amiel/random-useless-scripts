@@ -1,7 +1,8 @@
 h1. Random Useless Scripts
 
 Here you will find some scripts / programs that I have written to help myself understand a language or concept.
-As well as some scripts that I may not have written. I try to note that where I can.
+
+In addition, there are some scripts that I may not have written. I have tried to note that wherever possible.
 
 These are mostly organized by language.
 
