@@ -5,5 +5,5 @@ As well as some scripts that I may not have written. I try to note that where I 
 
 These are mostly organized by language.
 
-I do have some homework assignments here. If you are a CS student, you are welcome to read them to get ideas, but DO NOT COPY. How do you know I got a good grade?
+I do have some homework assignments here. If you are a CS student, you are welcome to read them to get ideas, but DO NOT COPY. After all, how do you know whether I got a good grade?
 
